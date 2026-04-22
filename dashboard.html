@@ -95,6 +95,59 @@ border-radius:10px;
 width:90%;
 max-width:400px;
 }
+  /* ================= MOBILE FIX ================= */
+@media (max-width: 600px){
+
+/* Header */
+.header{
+flex-direction:column;
+gap:8px;
+text-align:center;
+}
+
+/* Inputs */
+input,select{
+font-size:14px;
+padding:8px;
+}
+
+/* Table scroll */
+table{
+display:block;
+overflow-x:auto;
+white-space:nowrap;
+}
+
+/* Action buttons stack */
+td button{
+display:block;
+width:100%;
+margin:3px 0;
+}
+
+/* Card padding */
+.card{
+padding:10px;
+}
+
+/* Text adjust */
+h3,h4{
+font-size:16px;
+}
+
+}
+
+/* ================= EXTRA IMPROVE ================= */
+
+/* Smooth scroll table */
+table::-webkit-scrollbar{
+height:6px;
+}
+table::-webkit-scrollbar-thumb{
+background:#3b82f6;
+border-radius:10px;
+}
+
 
 /* ================= END UI ================= */
 </style>
