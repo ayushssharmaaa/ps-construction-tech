@@ -7,77 +7,125 @@
 
 <style>
 
-/* ================= UI ================= */
+/* ================= PREMIUM UI ================= */
 body{
 margin:0;
-font-family:Arial;
-background:#0f172a;
+font-family:'Segoe UI', sans-serif;
+background:linear-gradient(135deg,#0f172a,#1e293b);
 color:white;
+transition:0.3s;
 }
 
+/* HEADER */
 .header{
 display:flex;
 justify-content:space-between;
 align-items:center;
 padding:12px;
-background:#1e293b;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
+box-shadow:0 5px 20px rgba(0,0,0,0.4);
 }
-a{
-  padding-bottom: 40px; 
-  padding-left: 50%;
-  font-size: large;
-}
+
+/* LOGO */
 .logo{width:45px}
 
-.container{padding:10px;padding-bottom:80px;}
-
-.card{
-background:#1e293b;
-padding:15px;
-border-radius:12px;
-margin-bottom:10px;
-box-shadow:0 4px 10px rgba(0,0,0,0.3);
+/* CONTAINER */
+.container{
+padding:12px;
+padding-bottom:80px;
 }
 
+/* CARD (GLASS EFFECT) */
+.card{
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(12px);
+padding:15px;
+border-radius:15px;
+margin-bottom:12px;
+box-shadow:0 8px 25px rgba(0,0,0,0.4);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-3px);
+}
+
+/* INPUT */
 input,select{
 width:100%;
 padding:10px;
 margin:6px 0;
-border-radius:8px;
+border-radius:10px;
 border:none;
 background:#334155;
 color:white;
+transition:0.3s;
 }
 
+input:focus,select:focus{
+outline:none;
+background:#475569;
+}
+
+/* BUTTON */
 button{
-padding:10px;
+padding:9px 12px;
 border:none;
-border-radius:8px;
+border-radius:10px;
 cursor:pointer;
 margin-top:5px;
+transition:0.3s;
+font-weight:500;
 }
 
-.add-btn{background:#22c55e;width:100%;}
+button:hover{
+transform:scale(1.05);
+}
 
+/* ADD BUTTON */
+.add-btn{
+background:#22c55e;
+width:100%;
+}
+
+/* TABLE */
 table{
 width:100%;
 border-collapse:collapse;
 font-size:13px;
 }
 
-th{background:#3b82f6;}
-th,td{padding:8px;text-align:center;border-bottom:1px solid #555;}
-
-#toast{
-position:fixed;
-top:20px;
-right:20px;
-background:#111;
-padding:10px;
-display:none;
-border-radius:6px;
+th{
+background:#3b82f6;
 }
 
+th,td{
+padding:8px;
+text-align:center;
+border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+/* ROW HOVER */
+tr:hover{
+background:rgba(255,255,255,0.05);
+cursor:pointer;
+}
+
+/* TOAST */
+#toast{
+position:fixed;
+left:50%;
+transform:translateX(-50%);
+top:20px;
+background:#be0c4a;
+padding:10px 15px;
+display:none;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.5);
+}
+
+/* MODAL */
 .modal{
 display:none;
 position:fixed;
@@ -91,55 +139,13 @@ align-items:center;
 .modal-box{
 background:#1e293b;
 padding:20px;
-border-radius:10px;
+border-radius:12px;
 width:90%;
 max-width:400px;
-}
-  /* ================= MOBILE FIX ================= */
-@media (max-width: 600px){
-
-/* Header */
-.header{
-flex-direction:column;
-gap:8px;
-text-align:center;
+box-shadow:0 5px 25px rgba(0,0,0,0.5);
 }
 
-/* Inputs */
-input,select{
-font-size:14px;
-padding:8px;
-}
-
-/* Table scroll */
-table{
-display:block;
-overflow-x:auto;
-white-space:nowrap;
-}
-
-/* Action buttons stack */
-td button{
-display:block;
-width:100%;
-margin:3px 0;
-}
-
-/* Card padding */
-.card{
-padding:10px;
-}
-
-/* Text adjust */
-h3,h4{
-font-size:16px;
-}
-
-}
-
-/* ================= EXTRA IMPROVE ================= */
-
-/* Smooth scroll table */
+/* SCROLLBAR */
 table::-webkit-scrollbar{
 height:6px;
 }
@@ -148,8 +154,82 @@ background:#3b82f6;
 border-radius:10px;
 }
 
+/* MOBILE PERFECT */
+@media (max-width: 600px){
 
-/* ================= END UI ================= */
+.header{
+flex-direction:column;
+gap:8px;
+text-align:center;
+}
+
+input,select{
+font-size:14px;
+padding:8px;
+}
+
+table{
+display:block;
+overflow-x:auto;
+white-space:nowrap;
+}
+
+td button{
+display:block;
+width:100%;
+margin:3px 0;
+}
+
+.card{
+padding:12px;
+}
+
+h3,h4{
+font-size:16px;
+}
+
+}
+/* 🌙 LIGHT MODE */
+.light{
+background:#f5f5f5;
+color:#111;
+}
+
+.light .header{
+background:#ffffff;
+color:black;
+}
+
+.light .card{
+background:white;
+color:black;
+}
+
+.light input,
+.light select{
+background:#e2e8f0;
+color:black;
+}
+
+.light th{
+background:#2563eb;
+color:white;
+}
+
+.light td{
+border-bottom:1px solid #ddd;
+}
+
+.light tr:hover{
+background:#f1f5f9;
+}
+
+.light .modal-box{
+background:#ffffff;
+color:black;
+}
+/* ================= END ================= */
+
 </style>
 
 </head>
@@ -158,8 +238,8 @@ border-radius:10px;
 
 <div class="header">
   <img src="ps.png" class="logo"> 
-<h3>Dashboard</h3>
 
+<button onclick="toggleTheme()">Dashboard🌙</button>
 <button onclick="logout()">Logout</button>
 </div>
 
@@ -251,14 +331,26 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebas
 import { getFirestore, collection, addDoc, getDocs, updateDoc, deleteDoc, doc } 
 from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
+import { getAuth, onAuthStateChanged } 
+from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
 const firebaseConfig={
-apiKey:"AIzaSyDTp...",
+apiKey:"AIzaSyDTpS1oqcwP26FEVJlg7UbN2uK6jlRdYx4",
 authDomain:"ps-construction-tech.firebaseapp.com",
 projectId:"ps-construction-tech"
 };
 
 const app=initializeApp(firebaseConfig);
 const db=getFirestore(app);
+
+// 🔥 AUTH ADD
+const auth = getAuth(app);
+
+onAuthStateChanged(auth,(user)=>{
+  if(!user){
+    window.location.href="login.html";
+  }
+});
 
 async function saveLabour(data){
 await addDoc(collection(db,"labours"),data);
@@ -304,10 +396,19 @@ let max=Math.max(...f.map(l=>parseInt(l.id.slice(3))));
 return type+(max+1).toString().padStart(3,"0");
 }
 
-function logout(){
-localStorage.removeItem("isLoggedIn");
-location.href="login.html";
+async function logout(){
+
+const { getAuth, signOut } =
+await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js");
+
+const auth = getAuth();
+
+await signOut(auth);   // 🔥 Firebase logout
+
+window.location.href = "login.html";
+
 }
+
 
 async function addLabour(){
 let name=nameInput.value.trim();
@@ -320,9 +421,12 @@ if(!name||!rate)return showToast("Fill all");
 let id=generateTypeID(type);
 
 await saveLabour({
-id,name,type,site,
-rate:parseInt(rate),
-attendance:{},overtime:{},paid:0
+  id, name, type, site,
+  rate: parseInt(rate),
+  attendance:{},
+  overtime:{},
+  paid:0,
+  password:"1234"   // 🔥 ADD THIS
 });
 
 setTimeout(()=>{
@@ -373,6 +477,18 @@ showToast("OT Added ⏱️");
 
 // PAY 🔥 FIXED
 if(currentAction === "pay"){
+
+let today = document.getElementById("date").value 
+|| new Date().toISOString().split("T")[0];
+
+// 🔥 payments object बनाओ
+labourList[currentIndex].payments = labourList[currentIndex].payments || {};
+
+// 🔥 date wise store
+labourList[currentIndex].payments[today] =
+(labourList[currentIndex].payments[today] || 0) + parseInt(v);
+
+// total भी update
 labourList[currentIndex].paid += parseInt(v);
 
 showToast("Payment Added 💰");
@@ -389,15 +505,17 @@ function closeInputModal(){
 
 /* ========= UPDATE ========= */
 async function updateLabour(i){
-let l=labourList[i];
+let l = labourList[i];
+
 await window.updateDoc(window.doc(window.db,"labours",l.firebaseId),{
 attendance:l.attendance,
 overtime:l.overtime,
-paid:l.paid
+paid:l.paid,
+payments:l.payments || {}   // 🔥 IMPORTANT
 });
+
 loadData();
 }
-
 /* ========= DELETE ========= */
 async function deleteLabour(i){
 if(prompt("Pass")!=="1234")return;
@@ -407,7 +525,18 @@ loadData();
 showToast("Deleted ✅");
 }
 
+/* 🌙 THEME TOGGLE */
+function toggleTheme(){
+document.body.classList.toggle("light");
 
+let mode = document.body.classList.contains("light") ? "light" : "dark";
+localStorage.setItem("theme", mode);
+}
+
+/* 🔥 LOAD SAVED THEME */
+if(localStorage.getItem("theme")==="light"){
+document.body.classList.add("light");
+}
 /* ========= DETAIL ========= */
 function showDetails(i){
 let l=labourList[i];
@@ -417,7 +546,17 @@ modalSite.innerText=l.site;
 
 modalAttendance.innerHTML=Object.entries(l.attendance).map(([d,v])=>`${d} → ${v}`).join("<br>");
 modalOT.innerHTML=Object.entries(l.overtime).map(([d,v])=>`${d} → ${v}h`).join("<br>");
+// 🔥 PAYMENTS ADD
+let paymentHTML = Object.entries(l.payments || {})
+.map(([d,v])=>`${d} → ₹${v}`)
+.join("<br>") || "No payments";
 
+// show in modal
+modalOT.innerHTML += `
+<br><br>
+<b>💰 Payments:</b><br>
+${paymentHTML}
+`;
 detailModal.style.display="flex";
 }
 
