@@ -2,76 +2,80 @@
 
 <html>
 <head>
-  <title>PS Construction Login</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PS Construction Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body {
-  margin: 0;
-  height: 100vh;
-  background: url("background.png") no-repeat center center/cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+body{
+margin:0;
+height:100vh;
+background:url("background.png") no-repeat center/cover;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:Arial;
 }
 
-/* LOGIN BOX */
-.login-box {
-  background: white;
-  padding: 25px;
-  border-radius: 12px;
-  text-align: center;
-  width: 320px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+.login-box{
+background:white;
+padding:25px;
+border-radius:12px;
+text-align:center;
+width:320px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
 }
 
-.login-box h1 { margin-bottom: 5px; }
-.login-box h3 { color: gray; }
-
-input {
-  display: block;
-  margin: 10px auto;
-  padding: 10px;
-  width: 90%;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+input{
+margin:10px auto;
+padding:10px;
+width:90%;
+border-radius:6px;
+border:1px solid #ccc;
 }
 
-button {
-  padding: 10px;
-  width: 100%;
-  background: #007bff;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
+button{
+padding:10px;
+width:100%;
+background:#007bff;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
 }
 
-button:hover { background: #0056b3; }
-
-a { font-size: small; }
-
-/* LOGIN ROW */
-.login-row{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:15px;
+.forgot-btn{
+width:auto;
+background:none;
+color:#007bff;
+font-size:12px;
+padding:5px;
+border:none;
+cursor:pointer;
 }
 
-.login-row select{
-  padding:6px;
+#forgotBox{
+display:none;
+margin-top:10px;
 }
-
-/* TOAST */
-#toast {
-  position: fixed;
-  top: 20px;
-  background:black;
-  color:white;
-  padding:10px;
-  display:none;
-  border-radius:10px;
+a{
+    width:auto;
+background:none;
+color:#007bff;
+font-size:12px;
+padding:5px;
+border:none;
+cursor:pointer;
+    font-size: smaller;
+}
+/* toast */
+#toast{
+position:fixed;
+top:20px;
+background:black;
+color:white;
+padding:10px;
+border-radius:8px;
+display:none;
 }
 </style>
 
@@ -81,22 +85,35 @@ a { font-size: small; }
 
 <div class="login-box">
 
-  <h1>PS Construction</h1>
+<h2>PS Construction</h2>
 
-  <div class="login-row">
-    <h3>Login</h3>
-    <select id="role">
-      <option value="admin">Admin</option>
-      <option value="labour">Worker</option>
-    </select>
-  </div>
+<select id="role">
+<option value="admin">Admin</option>
+<option value="labour">Worker</option>
+</select>
 
-  <input type="text" id="username" placeholder="Enter Username">
-  <input type="password" id="password" placeholder="Enter Password">
+<input id="username" placeholder="Username">
+<input id="password" type="password" placeholder="Password">
 
-<button type="button" onclick="login()">Login</button>
+<button onclick="login()">Login</button>
 
-<a href="index.html">Home page</a>
+<button class="forgot-btn" onclick="showForgot()">Forgot Admin Password?</button>
+<a href="index.html">Home Page</a>
+
+<!-- 🔐 OTP BOX -->
+
+<div id="forgotBox">
+
+<input id="fp-username" placeholder="Admin Username">
+
+<button onclick="sendOTP()">Send OTP</button>
+
+<input id="otp" placeholder="Enter OTP">
+<input id="newPass" type="password" placeholder="New Password">
+
+<button onclick="verifyOTP()">Reset Password</button> <button onclick="closeForgot()">Cancel</button>
+
+</div>
 
 </div>
 
@@ -104,85 +121,128 @@ a { font-size: small; }
 
 <script>
 
+// 🔥 GLOBAL ADMIN PASSWORD
+let adminPass = localStorage.getItem("adminPass") || "1234";
+
+/* UI */
+function showForgot(){ forgotBox.style.display="block"; }
+function closeForgot(){ forgotBox.style.display="none"; }
+
 /* TOAST */
 function showToast(msg){
-  let t = document.getElementById("toast");
-  t.innerText = msg;
-  t.style.display = "block";
-  setTimeout(()=>t.style.display="none",2000);
+toast.innerText=msg;
+toast.style.display="block";
+setTimeout(()=>toast.style.display="none",2000);
 }
 
 /* LOGIN */
 async function login(){
 
-let role = document.getElementById("role").value;
-let username = document.getElementById("username").value;
-let password = document.getElementById("password").value;
+let role = roleSelect.value;
+let email = username.value;
+let passwordVal = password.value;
 
-/* ADMIN LOGIN */
-if(role === "admin"){
-
-  if(username === "admin" && password === "1234"){
-
-    showToast("Admin Login ✅");
-
-    // 🔥 redirect
-    setTimeout(()=>{
-      window.location.href = "dashboard.html";
-    },800);
-
-  } else {
-    showToast("Wrong Admin Login ❌");
-  }
-
-  return;
-}
-
-/* LABOUR LOGIN */
-if(role === "labour"){
-
+// 🔥 Firebase import
 const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js");
-const { getFirestore, collection, getDocs } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js");
+const { getAuth, signInWithEmailAndPassword } =
+await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js");
 
 const firebaseConfig = {
-apiKey: "AIzaSyDTpS1oqcwP26FEVJlg7UbN2uK6jlRdYx4",
-authDomain: "ps-construction-tech.firebaseapp.com",
-projectId: "ps-construction-tech"
+apiKey:"AIzaSyDTpS1oqcwP26FEVJlg7UbN2uK6jlRdYx4",
+authDomain:"ps-construction-tech.firebaseapp.com",
+projectId:"ps-construction-tech"
 };
 
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+const auth = getAuth(app);
 
-let snapshot = await getDocs(collection(db, "labours"));
+// 🔐 ADMIN LOGIN
+if(role === "admin"){
 
-let found = false;
-
-snapshot.forEach(doc=>{
-let l = doc.data();
-
-if(l.id === username){
-
-found = true;
-
-localStorage.setItem("labourId", l.id);
-
-showToast("Labour Login ✅");
-
-setTimeout(()=>{
-  window.location.href = "labour-dashboard.html";
-},800);
-
-}
-
+signInWithEmailAndPassword(auth, email, passwordVal)
+.then(()=>{
+showToast("Login Success ✅");
+setTimeout(()=>location.href="dashboard.html",800);
+})
+.catch(()=>{
+showToast("Wrong Login ❌");
 });
 
-if(!found){
-showToast("Wrong Labour Login ❌");
+return;
+}
+
+// 👷 LABOUR LOGIN (same as before)
+if(role === "labour"){
+localStorage.setItem("labourId", email);
+location.href="labour-dashboard.html";
 }
 
 }
 
+
+/* OTP SYSTEM */
+async function sendOTP(){
+
+if(fpUsername.value !== "admin"){
+alert("Only admin allowed ❌");
+return;
 }
+
+const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js");
+const { getAuth, RecaptchaVerifier, signInWithPhoneNumber } =
+await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js");
+
+const app = initializeApp({
+apiKey:"AIzaSyDTpS1oqcwP26FEVJlg7UbN2uK6jlRdYx4",
+authDomain:"ps-construction-tech.firebaseapp.com",
+projectId:"ps-construction-tech"
+});
+
+const auth = getAuth(app);
+
+// recaptcha
+window.recaptchaVerifier = new RecaptchaVerifier(auth,'recaptcha',{size:'normal'});
+
+// 🔥 TEST NUMBER (Firebase console me add kar)
+let phone="+919627898972";
+
+signInWithPhoneNumber(auth,phone,window.recaptchaVerifier)
+.then(res=>{
+window.confirmationResult=res;
+alert("OTP Sent (123456 use karo)");
+})
+.catch(err=>{
+console.log(err);
+alert("OTP Error ❌");
+});
+}
+
+/* VERIFY */
+function verifyOTP(){
+
+let code = otp.value;
+let newPass = newPassInput.value;
+
+confirmationResult.confirm(code)
+.then(()=>{
+localStorage.setItem("adminPass",newPass);
+alert("Password Reset Successful ✅");
+closeForgot();
+})
+.catch(()=>{
+alert("Wrong OTP ❌");
+});
+}
+
+/* ELEMENT SHORTCUT */
+let roleSelect=document.getElementById("role");
+let username=document.getElementById("username");
+let password=document.getElementById("password");
+let forgotBox=document.getElementById("forgotBox");
+let fpUsername=document.getElementById("fp-username");
+let otp=document.getElementById("otp");
+let newPassInput=document.getElementById("newPass");
+let toast=document.getElementById("toast");
 
 </script>
 
