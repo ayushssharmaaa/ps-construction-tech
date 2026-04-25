@@ -642,6 +642,41 @@ width:90%;
 .dropdown-menu.show{
   display: block;
 }
+#google_translate_element{
+  display: flex;
+  align-items: center;
+  max-width: 140px;
+  overflow: hidden;
+}
+
+.goog-te-gadget{
+  font-size: 0 !important;
+}
+
+.goog-te-gadget select{
+  max-width: 100%;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 13px;
+  cursor: pointer;
+}
+@media (max-width: 768px){
+  #google_translate_element{
+    max-width: 100px;
+  }
+
+  .goog-te-gadget select{
+    font-size: 12px;
+    padding: 5px 8px;
+  }
+}
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
 </style>
 </head>
 <body>
@@ -661,11 +696,14 @@ width:90%;
     <li><a href="#contact">Contact</a></li>
    
   </ul>
+  <div style="background: white">
+  <div id="google_translate_element"></div>
+</div>
  <div class="nav-right">
   <button class="theme-toggle" id="themeToggle" title="Toggle dark mode">
     <i class="fa-solid fa-moon"></i>
   </button>
-
+    
   <div class="login-dropdown">
     <button class="btn-login" onclick="toggleLoginMenu()">
       <i class="fa-solid fa-right-to-bracket"></i> Login
@@ -832,7 +870,7 @@ width:90%;
         <div class="project-overlay"><h3>Sector 29 Commercial Complex</h3><span>Gurgaon, Haryana · 2024</span></div>
       </div>
       <div class="project-card" data-aos="zoom-in" data-aos-delay="100">
-        <img src="background.png" alt="Luxury Villa" class="project-img">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Luxury Villa" class="project-img">
         <div class="project-overlay"><h3>DLF Phase 5 Villa</h3><span>Residential · 2023</span></div>
       </div>
       <div class="project-card" data-aos="zoom-in" data-aos-delay="150">
@@ -1150,5 +1188,16 @@ let url = "https://wa.me/919627898972?text=" + text;
 window.open(url, "_blank");
 }
 </script>
+<script>
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    includedLanguages: 'en,hi',
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+  }, 'google_translate_element');
+}
+</script>
+
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
