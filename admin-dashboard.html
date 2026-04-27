@@ -15,45 +15,45 @@
 <style>
 /* ─── CSS VARIABLES ─── */
 :root {
-  --bg: #f0f4f8;
-  --bg2: #e8edf3;
-  --surface: rgba(255,255,255,0.85);
-  --surface2: rgba(255,255,255,0.6);
-  --glass: rgba(255,255,255,0.72);
-  --glass-border: rgba(255,255,255,0.9);
-  --sidebar-bg: rgba(15,23,42,0.97);
-  --sidebar-text: rgba(255,255,255,0.75);
-  --sidebar-active: #f97316;
-  --text: #0f172a;
-  --text2: #64748b;
-  --text3: #94a3b8;
-  --accent: #f97316;
-  --accent2: #3b82f6;
-  --accent3: #10b981;
-  --danger: #ef4444;
-  --warn: #f59e0b;
-  --border: rgba(148,163,184,0.2);
-  --shadow: 0 4px 24px rgba(15,23,42,0.08);
-  --shadow-lg: 0 16px 48px rgba(15,23,42,0.14);
-  --radius: 16px;
-  --radius-sm: 10px;
-  --transition: 0.25s cubic-bezier(0.4,0,0.2,1);
+  --bg: #f4f6fb;
+  --bg2: #eaeff7;
+  --surface: rgba(255,255,255,0.96);
+  --surface2: rgba(255,255,255,0.75);
+  --glass: rgba(255,255,255,0.88);
+  --glass-border: rgba(255,255,255,0.95);
+  --sidebar-bg: #1a2540;
+  --sidebar-text: rgba(200,212,240,0.82);
+  --sidebar-active: #2563eb;
+  --text: #0f1e3c;
+  --text2: #4a5878;
+  --text3: #8a96b0;
+  --accent: #2563eb;
+  --accent2: #7c3aed;
+  --accent3: #059669;
+  --danger: #dc2626;
+  --warn: #d97706;
+  --border: rgba(100,120,180,0.15);
+  --shadow: 0 2px 16px rgba(15,30,80,0.07);
+  --shadow-lg: 0 12px 40px rgba(15,30,80,0.13);
+  --radius: 14px;
+  --radius-sm: 9px;
+  --transition: 0.22s cubic-bezier(0.4,0,0.2,1);
   --sidebar-w: 260px;
 }
 [data-theme="dark"] {
-  --bg: #0a0f1e;
-  --bg2: #0f172a;
-  --surface: rgba(15,23,42,0.9);
-  --surface2: rgba(30,41,59,0.7);
-  --glass: rgba(15,23,42,0.85);
-  --glass-border: rgba(255,255,255,0.08);
-  --sidebar-bg: rgba(5,8,16,0.98);
-  --text: #f1f5f9;
-  --text2: #94a3b8;
-  --text3: #64748b;
+  --bg: #0d1424;
+  --bg2: #111b30;
+  --surface: rgba(17,27,48,0.95);
+  --surface2: rgba(26,37,64,0.8);
+  --glass: rgba(17,27,48,0.9);
+  --glass-border: rgba(255,255,255,0.07);
+  --sidebar-bg: #090f1e;
+  --text: #e8edf8;
+  --text2: #8a9bc0;
+  --text3: #546080;
   --border: rgba(255,255,255,0.07);
-  --shadow: 0 4px 24px rgba(0,0,0,0.4);
-  --shadow-lg: 0 16px 48px rgba(0,0,0,0.5);
+  --shadow: 0 4px 24px rgba(0,0,0,0.45);
+  --shadow-lg: 0 16px 48px rgba(0,0,0,0.55);
 }
 
 /* ─── RESET & BASE ─── */
@@ -74,7 +74,7 @@ body::before {
   right: -20%;
   width: 700px;
   height: 700px;
-  background: radial-gradient(circle, rgba(249,115,22,0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(37,99,235,0.06) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -85,12 +85,12 @@ body::after {
   left: 10%;
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(59,130,246,0.07) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(124,58,237,0.05) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
-[data-theme="dark"] body::before { background: radial-gradient(circle, rgba(249,115,22,0.12) 0%, transparent 70%); }
-[data-theme="dark"] body::after { background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 70%); }
+[data-theme="dark"] body::before { background: radial-gradient(circle, rgba(37,99,235,0.1) 0%, transparent 70%); }
+[data-theme="dark"] body::after { background: radial-gradient(circle, rgba(124,58,237,0.08) 0%, transparent 70%); }
 
 /* ─── LAYOUT ─── */
 #app { display: flex; min-height: 100vh; position: relative; z-index: 1; }
@@ -112,7 +112,7 @@ body::after {
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(249,115,22,0.6), transparent);
+  background: linear-gradient(90deg, transparent, rgba(37,99,235,0.7), transparent);
 }
 .sidebar-logo {
   padding: 24px 20px 20px;
@@ -125,14 +125,14 @@ body::after {
 }
 .logo-icon {
   width: 38px; height: 38px;
-  background: linear-gradient(135deg, #f97316, #ea580c);
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 18px;
   color: white;
-  box-shadow: 0 4px 12px rgba(249,115,22,0.4);
+  box-shadow: 0 4px 12px rgba(37,99,235,0.4);
 }
 .logo-text { font-family: 'Syne', sans-serif; color: #fff; }
 .logo-text .brand { font-size: 18px; font-weight: 800; letter-spacing: -0.5px; }
@@ -165,9 +165,9 @@ body::after {
 .nav-item i { width: 18px; text-align: center; font-size: 15px; flex-shrink: 0; }
 .nav-item:hover { background: rgba(255,255,255,0.07); color: #fff; }
 .nav-item.active {
-  background: linear-gradient(135deg, rgba(249,115,22,0.25), rgba(249,115,22,0.1));
-  color: #fb923c;
-  border: 1px solid rgba(249,115,22,0.2);
+  background: linear-gradient(135deg, rgba(37,99,235,0.22), rgba(37,99,235,0.08));
+  color: #60a5fa;
+  border: 1px solid rgba(37,99,235,0.25);
 }
 .nav-item.active::before {
   content: '';
@@ -175,7 +175,7 @@ body::after {
   left: 0; top: 50%;
   transform: translateY(-50%);
   width: 3px; height: 60%;
-  background: #f97316;
+  background: #2563eb;
   border-radius: 0 2px 2px 0;
 }
 
@@ -232,7 +232,7 @@ body::after {
 .topbar-search input:focus {
   border-color: var(--accent);
   background: var(--surface);
-  box-shadow: 0 0 0 3px rgba(249,115,22,0.1);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
 }
 .topbar-search i {
   position: absolute;
@@ -259,7 +259,7 @@ body::after {
 .avatar {
   width: 38px; height: 38px;
   border-radius: 10px;
-  background: linear-gradient(135deg, #f97316, #3b82f6);
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
   display: flex; align-items: center; justify-content: center;
   color: white; font-weight: 700; font-size: 14px;
   cursor: pointer;
@@ -374,8 +374,8 @@ body::after {
   opacity: 0;
 }
 .btn:active::after { width: 200px; height: 200px; opacity: 0; }
-.btn-primary { background: linear-gradient(135deg, #f97316, #ea580c); color: #fff; box-shadow: 0 4px 14px rgba(249,115,22,0.35); }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(249,115,22,0.45); }
+.btn-primary { background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #fff; box-shadow: 0 4px 14px rgba(37,99,235,0.3); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37,99,235,0.4); }
 .btn-secondary { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
 .btn-secondary:hover { background: var(--bg); border-color: var(--accent); color: var(--accent); }
 .btn-danger { background: rgba(239,68,68,0.1); color: #ef4444; border: 1px solid rgba(239,68,68,0.2); }
@@ -419,7 +419,7 @@ body::after {
   outline: none;
   transition: all var(--transition);
 }
-.table-search input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(249,115,22,0.1); }
+.table-search input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
 .table-search i { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); color: var(--text3); font-size: 12px; }
 .table-select {
   height: 36px;
@@ -456,7 +456,7 @@ tbody tr {
   transition: background var(--transition);
 }
 tbody tr:last-child { border-bottom: none; }
-tbody tr:hover { background: rgba(249,115,22,0.04); }
+tbody tr:hover { background: rgba(37,99,235,0.04); }
 tbody td { padding: 13px 16px; font-size: 13.5px; vertical-align: middle; }
 
 /* ─── BADGES ─── */
@@ -551,7 +551,7 @@ tbody td { padding: 13px 16px; font-size: 13.5px; vertical-align: middle; }
   outline: none;
   transition: all var(--transition);
 }
-.form-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(249,115,22,0.1); background: var(--surface); }
+.form-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); background: var(--surface); }
 .form-input::placeholder { color: var(--text3); }
 select.form-input { cursor: pointer; }
 
@@ -561,14 +561,14 @@ select.form-input { cursor: pointer; }
   align-items: center;
   gap: 18px;
   padding: 20px;
-  background: linear-gradient(135deg, rgba(249,115,22,0.08), rgba(59,130,246,0.06));
+  background: linear-gradient(135deg, rgba(37,99,235,0.07), rgba(124,58,237,0.05));
   border-radius: 14px;
   margin-bottom: 20px;
 }
 .detail-avatar {
   width: 56px; height: 56px;
   border-radius: 14px;
-  background: linear-gradient(135deg, #f97316, #3b82f6);
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
   display: flex; align-items: center; justify-content: center;
   font-family: 'Syne', sans-serif;
   font-size: 22px;
@@ -742,19 +742,19 @@ select.form-input { cursor: pointer; }
 .login-header { text-align: center; margin-bottom: 32px; }
 .login-logo-icon {
   width: 60px; height: 60px;
-  background: linear-gradient(135deg, #f97316, #ea580c);
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
   border-radius: 16px;
   display: flex; align-items: center; justify-content: center;
   font-size: 26px; color: white;
   margin: 0 auto 14px;
-  box-shadow: 0 8px 24px rgba(249,115,22,0.4);
+  box-shadow: 0 8px 24px rgba(37,99,235,0.35);
 }
 .login-title { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; }
 .login-sub { font-size: 13px; color: var(--text2); margin-top: 4px; }
 .login-form { display: flex; flex-direction: column; gap: 16px; }
 .btn-login-submit {
   height: 46px;
-  background: linear-gradient(135deg, #f97316, #ea580c);
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
   color: white;
   border: none;
   border-radius: 12px;
@@ -763,10 +763,10 @@ select.form-input { cursor: pointer; }
   font-weight: 600;
   cursor: pointer;
   transition: all 0.25s ease;
-  box-shadow: 0 4px 14px rgba(249,115,22,0.4);
+  box-shadow: 0 4px 14px rgba(37,99,235,0.35);
   margin-top: 4px;
 }
-.btn-login-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(249,115,22,0.5); }
+.btn-login-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37,99,235,0.45); }
 .login-hint {
   text-align: center;
   font-size: 12px;
@@ -782,11 +782,108 @@ select.form-input { cursor: pointer; }
   to { opacity: 1; transform: scale(1) translateY(0); }
 }
 
-@media print {
-  .slip-only { display: block !important; }
-  body > *:not(#slip-print) { display: none !important; }
-  #slip-print { display: block !important; }
+/* ─── AUDIT LOG ─── */
+.audit-filter-bar {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
 }
+.audit-entry {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 13px 18px;
+  border-bottom: 1px solid var(--border);
+  transition: background var(--transition);
+}
+.audit-entry:last-child { border-bottom: none; }
+.audit-entry:hover { background: rgba(37,99,235,0.03); }
+.audit-icon {
+  width: 36px; height: 36px;
+  border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.audit-icon.add    { background: rgba(5,150,105,0.12); color: #059669; }
+.audit-icon.edit   { background: rgba(37,99,235,0.12); color: #2563eb; }
+.audit-icon.delete { background: rgba(220,38,38,0.12); color: #dc2626; }
+.audit-icon.pay    { background: rgba(124,58,237,0.12); color: #7c3aed; }
+.audit-icon.att    { background: rgba(217,119,6,0.12); color: #d97706; }
+.audit-content { flex: 1; min-width: 0; }
+.audit-title { font-size: 13.5px; font-weight: 600; color: var(--text); line-height: 1.4; }
+.audit-title b { color: var(--accent); }
+.audit-meta { font-size: 11.5px; color: var(--text3); margin-top: 3px; display: flex; gap: 10px; flex-wrap: wrap; }
+.audit-meta .by { color: var(--accent2); font-weight: 600; }
+.audit-badge { flex-shrink: 0; }
+
+/* ─── ATTENDANCE ID SEARCH ─── */
+.att-search-box {
+  position: relative;
+  margin-bottom: 12px;
+}
+.att-search-box input {
+  width: 100%;
+  height: 40px;
+  padding: 0 14px 0 38px;
+  border-radius: 9px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px;
+  outline: none;
+  transition: all var(--transition);
+}
+.att-search-box input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+.att-search-box i { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text3); font-size: 13px; }
+.att-search-results {
+  display: none;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  box-shadow: var(--shadow-lg);
+  max-height: 200px;
+  overflow-y: auto;
+  margin-top: 4px;
+}
+.att-search-results.open { display: block; }
+.att-result-item {
+  padding: 10px 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  border-bottom: 1px solid var(--border);
+  transition: background var(--transition);
+}
+.att-result-item:last-child { border-bottom: none; }
+.att-result-item:hover { background: rgba(37,99,235,0.06); }
+.att-result-item .r-id { background: var(--accent); color: white; padding: 2px 7px; border-radius: 5px; font-size: 11px; font-weight: 700; flex-shrink: 0; }
+.att-result-item .r-name { font-weight: 600; }
+.att-result-item .r-site { color: var(--text3); font-size: 12px; }
+.att-selected-worker {
+  display: none;
+  background: rgba(37,99,235,0.07);
+  border: 1px solid rgba(37,99,235,0.2);
+  border-radius: 9px;
+  padding: 10px 14px;
+  margin-bottom: 4px;
+  font-size: 13px;
+  align-items: center;
+  gap: 10px;
+}
+.att-selected-worker.show { display: flex; }
+.att-selected-worker .sw-name { font-weight: 600; color: var(--text); }
+.att-selected-worker .sw-id { background: var(--accent); color: white; padding: 2px 7px; border-radius: 5px; font-size: 11px; font-weight: 700; }
+.att-selected-worker .sw-clear { margin-left: auto; cursor: pointer; color: var(--text3); font-size: 13px; }
+.att-selected-worker .sw-clear:hover { color: var(--danger); }
+
 #slip-print {
   display: none;
   padding: 40px;
@@ -925,7 +1022,9 @@ select.form-input { cursor: pointer; }
       </div>
     </div>
     <nav class="sidebar-nav">
-      <div class="nav-section-label">Main</div>
+      <div class="nav-section-label" style="margin-top:8px;">Language</div>
+      <div id="google_translate_element"></div>
+      <div class="nav-section-label" style="margin-top:8px;">Main</div>
       <div class="nav-item active" onclick="showPage('dashboard')">
         <i class="fas fa-chart-line"></i><span>Dashboard</span>
       </div>
@@ -945,6 +1044,9 @@ select.form-input { cursor: pointer; }
       <div class="nav-section-label" style="margin-top:8px;">Reports</div>
       <div class="nav-item" onclick="showPage('salary')">
         <i class="fas fa-file-invoice-dollar"></i><span>Salary Report</span>
+      </div>
+      <div class="nav-item" onclick="showPage('auditlog')">
+        <i class="fas fa-history"></i><span>Audit Log</span>
       </div>
     </nav>
     <div class="sidebar-footer">
@@ -966,8 +1068,7 @@ select.form-input { cursor: pointer; }
         <input type="text" id="globalSearch" placeholder="Search labourers…" oninput="handleGlobalSearch(this.value)">
       </div>
       <div class="topbar-actions">
-        <div>
-    <div id="google_translate_element"></div></div>
+      
         <button class="icon-btn theme-toggle" onclick="toggleTheme()" title="Toggle theme">
           <i class="fas fa-moon" id="themeIcon"></i>
         </button>
@@ -1160,6 +1261,42 @@ select.form-input { cursor: pointer; }
       </div>
     </section>
 
+    <!-- ── PAGE: AUDIT LOG ── -->
+    <section class="page" id="page-auditlog">
+      <div class="section-header">
+        <div class="section-title">Audit Log</div>
+        <div class="section-actions">
+          <button class="btn btn-secondary btn-sm" onclick="clearAuditLog()" title="Clear all logs">
+            <i class="fas fa-trash"></i> Clear Log
+          </button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <div class="audit-filter-bar">
+          <div class="table-search" style="max-width:240px;">
+            <i class="fas fa-search"></i>
+            <input type="text" id="auditSearch" placeholder="Search logs…" oninput="renderAuditLog()">
+          </div>
+          <select class="table-select" id="auditTypeFilter" onchange="renderAuditLog()">
+            <option value="">All Actions</option>
+            <option value="add">Added</option>
+            <option value="edit">Edited</option>
+            <option value="delete">Deleted</option>
+            <option value="pay">Payment</option>
+            <option value="att">Attendance</option>
+          </select>
+          <select class="table-select" id="auditModuleFilter" onchange="renderAuditLog()">
+            <option value="">All Modules</option>
+            <option value="Labour">Labour</option>
+            <option value="Payment">Payment</option>
+            <option value="Attendance">Attendance</option>
+            <option value="Overtime">Overtime</option>
+          </select>
+        </div>
+        <div id="auditLogContainer"></div>
+      </div>
+    </section>
+
   </div><!-- end main-content -->
 
 <!-- Modals inside adminApp -->
@@ -1246,7 +1383,7 @@ function showScreenPopup(title, msg, type = 'info', callback = null) {
     </div>
     <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin-bottom:10px">${esc(title)}</div>
     <div style="color:var(--text2);font-size:14px;margin-bottom:24px;line-height:1.6">${msg}</div>
-    <button onclick="document.getElementById('screenPopupOverlay').remove();if(window._popupCb){window._popupCb();window._popupCb=null;}" style="background:linear-gradient(135deg,#f97316,#ea580c);color:white;border:none;border-radius:10px;padding:11px 28px;font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif">OK</button>
+    <button onclick="document.getElementById('screenPopupOverlay').remove();if(window._popupCb){window._popupCb();window._popupCb=null;}" style="background:linear-gradient(135deg,#2563eb,#1d4ed8);color:white;border:none;border-radius:10px;padding:11px 28px;font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif">OK</button>
   </div>`;
   window._popupCb = callback || null;
   document.body.appendChild(overlay);
@@ -1357,16 +1494,27 @@ function showPinPopup(title, msg, onConfirm) {
       <button class="modal-close" onclick="closeModal('attendanceModal')"><i class="fas fa-times"></i></button>
     </div>
     <div class="modal-body">
-      <div class="form-grid">
-        <div class="form-group">
-          <label class="form-label">Worker ID se Select Karen</label>
-          <select class="form-input" id="attWorker"><option value="">-- ID se Worker Chunen --</option></select>
+      <div class="form-group full" style="margin-bottom:14px;">
+        <label class="form-label">Worker Search (Name ya ID se dhundhein)</label>
+        <div class="att-search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" id="attSearchInput" placeholder="Worker ka naam ya PSC ID type karen…" oninput="searchWorkerForAtt(this.value)" autocomplete="off">
         </div>
+        <div class="att-search-results" id="attSearchResults"></div>
+        <div class="att-selected-worker" id="attSelectedWorker">
+          <span class="sw-id" id="attSelId"></span>
+          <span class="sw-name" id="attSelName"></span>
+          <span class="sw-site" id="attSelSite" style="color:var(--text3);font-size:12px;"></span>
+          <i class="fas fa-times-circle sw-clear" onclick="clearAttSelection()" title="Clear selection"></i>
+        </div>
+        <input type="hidden" id="attWorker">
+      </div>
+      <div class="form-grid">
         <div class="form-group">
           <label class="form-label">Date</label>
           <input type="date" class="form-input" id="attModalDate">
         </div>
-        <div class="form-group full">
+        <div class="form-group">
           <label class="form-label">Status</label>
           <select class="form-input" id="attStatus">
             <option value="Present">Present</option>
@@ -1546,6 +1694,7 @@ async function initAdminApp() {
   setVal('payDate', today);
   setVal('labourDate', today);
 
+  loadAuditLogs();
   await loadAllData();
   renderAll();
 }
@@ -1830,14 +1979,6 @@ function calcTotalSalary(l) {
 
 // ─── POPULATE WORKER SELECTS ───
 function populateWorkerSelects() {
-  // attWorker shows ID first, then name
-  const attEl = document.getElementById('attWorker');
-  if (attEl) {
-    const cur = attEl.value;
-    attEl.innerHTML = '<option value="">-- ID se Worker Chunen --</option>' + 
-      labours.map(l => `<option value="${l.id}">[${esc(l.pscId||'?')}] ${esc(l.name)}</option>`).join('');
-    attEl.value = cur;
-  }
   // otWorker and payWorker show name
   ['otWorker', 'payWorker'].forEach(id => {
     const el = document.getElementById(id);
@@ -1903,12 +2044,14 @@ async function saveLabour() {
     if (!useLocalStorage) await db.collection('labours').doc(editingId).update(data);
     const idx = labours.findIndex(l => l.id === editingId);
     if (idx !== -1) labours[idx] = { id: editingId, ...data };
+    addAuditLog('edit', 'Labour', `Worker edited: <b>${name}</b>`, `Type: ${type} | Site: ${site} | Rate: ₹${parseFloat(rate).toLocaleString('en-IN')}/day`);
     showToast('Worker updated successfully ✅', 'success');
   } else {
     const id = 'l_' + Date.now();
     data.pscId = generateLabourId();
     if (!useLocalStorage) await db.collection('labours').doc(id).set(data);
     labours.push({ id, ...data });
+    addAuditLog('add', 'Labour', `New worker added: <b>${name}</b>`, `ID: ${data.pscId} | Type: ${type} | Site: ${site} | Rate: ₹${parseFloat(rate).toLocaleString('en-IN')}/day`);
     showToast('Worker add ho gaya: ' + data.pscId, 'success');
     setTimeout(() => {
       showScreenPopup('✅ Labour Add Ho Gaya!', `<b>Naam:</b> ${name}<br><b>Unique ID:</b> ${data.pscId}<br><b>Site:</b> ${site}<br><b>Daily Rate:</b> ₹${parseFloat(rate).toLocaleString('en-IN')}<br><br><i style="color:var(--accent);font-weight:600">Worker apni login ke liye yeh ID use karein: ${data.pscId}</i>`, 'success');
@@ -1927,7 +2070,10 @@ async function saveLabour() {
 }
 
 // ─── ATTENDANCE ───
-function openBulkAttModal() { openModal('attendanceModal'); }
+function openBulkAttModal() {
+  clearAttSelection();
+  openModal('attendanceModal');
+}
 
 async function saveAttendance() {
   const labourId = document.getElementById('attWorker').value;
@@ -1947,9 +2093,11 @@ async function saveAttendance() {
   }
   if (!useLocalStorage) await db.collection('attendance').doc(id).set(data);
   attendance.push({ id, ...data });
+  const lName = labours.find(x => x.id === labourId)?.name || 'Worker';
+  addAuditLog('att', 'Attendance', `Attendance marked: <b>${lName}</b>`, `Date: ${formatDate(date)} | Status: ${status}`);
   showToast('Attendance mark ho gayi ✅', 'success');
 
-  saveAll(); closeModal('attendanceModal'); renderAll();
+  saveAll(); closeModal('attendanceModal'); clearAttSelection(); renderAll();
 }
 
 // ─── OVERTIME ───
@@ -1997,6 +2145,8 @@ async function saveOT() {
 
   if (!useLocalStorage) await db.collection('overtime').doc(id).set(data);
   overtime.push({ id, ...data });
+  const otLName = labours.find(x => x.id === labourId)?.name || 'Worker';
+  addAuditLog('add', 'Overtime', `Overtime added: <b>${otLName}</b>`, `Date: ${formatDate(date)} | Hours: ${hours} | Amount: ₹${amt.toLocaleString('en-IN')}`);
   saveAll(); closeModal('overtimeModal'); renderAll();
   showToast('Overtime recorded ✅ ₹' + amt.toLocaleString('en-IN'), 'success');
 }
@@ -2023,9 +2173,11 @@ async function savePayment() {
 
   const data = { labourId, date, amount: parseFloat(amount), method, note };
   const id = 'p_' + Date.now();
+  const workerName = l ? l.name : 'Worker';
 
   if (!useLocalStorage) await db.collection('payments').doc(id).set(data);
   payments.push({ id, ...data });
+  addAuditLog('pay', 'Payment', `Payment recorded: <b>${workerName}</b>`, `Amount: ₹${parseFloat(amount).toLocaleString('en-IN')} | Method: ${method} | Date: ${formatDate(date)}${isExtra ? ' ⚠️ EXTRA' : ''}`);
   saveAll();
   closeModal('paymentModal');
 
@@ -2035,7 +2187,6 @@ async function savePayment() {
 
   renderAll();
 
-  const workerName = l ? l.name : 'Worker';
   const extraMsg = isExtra ? '<br><span style="color:#ef4444;font-weight:600">⚠️ EXTRA PAYMENT: Yeh payment total salary se zyada hai!</span>' : '';
   showToast('Payment record ho gayi ✅' + (isExtra ? ' (EXTRA)' : ''), 'success');
   setTimeout(() => {
@@ -2067,9 +2218,9 @@ async function executeDelete() {
 
 async function doDelete(type, id) {
   if (type === 'labour') {
+    const lName = labours.find(l => l.id === id)?.name || 'Unknown';
     if (!useLocalStorage) {
       await db.collection('labours').doc(id).delete();
-      // Also delete related records
       const attIds = attendance.filter(a => a.labourId === id).map(a => a.id);
       const otIds  = overtime.filter(o => o.labourId === id).map(o => o.id);
       const pIds   = payments.filter(p => p.labourId === id).map(p => p.id);
@@ -2081,18 +2232,28 @@ async function doDelete(type, id) {
     attendance = attendance.filter(a => a.labourId !== id);
     overtime   = overtime.filter(o => o.labourId !== id);
     payments   = payments.filter(p => p.labourId !== id);
+    addAuditLog('delete', 'Labour', `Worker deleted: <b>${lName}</b>`, 'All related attendance, overtime and payment records also removed.');
     showToast('Worker deleted', 'success');
   } else if (type === 'attendance') {
+    const aRec = attendance.find(a => a.id === id);
+    const aName = labours.find(l => l.id === aRec?.labourId)?.name || 'Unknown';
     if (!useLocalStorage) await db.collection('attendance').doc(id).delete();
     attendance = attendance.filter(a => a.id !== id);
+    addAuditLog('delete', 'Attendance', `Attendance deleted: <b>${aName}</b>`, `Date: ${formatDate(aRec?.date)} | Status: ${aRec?.status||'—'}`);
     showToast('Attendance record deleted', 'success');
   } else if (type === 'overtime') {
+    const oRec = overtime.find(o => o.id === id);
+    const oName = labours.find(l => l.id === oRec?.labourId)?.name || 'Unknown';
     if (!useLocalStorage) await db.collection('overtime').doc(id).delete();
     overtime = overtime.filter(o => o.id !== id);
+    addAuditLog('delete', 'Overtime', `Overtime deleted: <b>${oName}</b>`, `Date: ${formatDate(oRec?.date)} | Hours: ${oRec?.hours||0}`);
     showToast('Overtime record deleted', 'success');
   } else if (type === 'payment') {
+    const pRec = payments.find(p => p.id === id);
+    const pName = labours.find(l => l.id === pRec?.labourId)?.name || 'Unknown';
     if (!useLocalStorage) await db.collection('payments').doc(id).delete();
     payments = payments.filter(p => p.id !== id);
+    addAuditLog('delete', 'Payment', `Payment deleted: <b>${pName}</b>`, `Amount: ₹${parseFloat(pRec?.amount||0).toLocaleString('en-IN')} | Date: ${formatDate(pRec?.date)}`);
     showToast('Payment deleted', 'success');
   }
   saveAll(); renderAll();
@@ -2263,12 +2424,13 @@ function showPage(page) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   document.getElementById(`page-${page}`)?.classList.add('active');
-  const titles = { dashboard:'Dashboard', labours:'Labour Registry', attendance:'Attendance', overtime:'Overtime', payments:'Payments', salary:'Salary Report' };
+  const titles = { dashboard:'Dashboard', labours:'Labour Registry', attendance:'Attendance', overtime:'Overtime', payments:'Payments', salary:'Salary Report', auditlog:'Audit Log' };
   document.getElementById('pageTitle').textContent = titles[page] || '';
   document.querySelectorAll('.nav-item').forEach(n => {
     if (n.getAttribute('onclick')?.includes(page)) n.classList.add('active');
   });
   closeSidebar();
+  if (page === 'auditlog') renderAuditLog();
 }
 
 // ─── SIDEBAR ───
@@ -2357,6 +2519,163 @@ function formatDate(d) {
 function emptyRow(cols, msg) {
   return `<tr><td colspan="${cols}"><div class="empty-state"><div class="empty-state-icon"><i class="fas fa-inbox"></i></div><div class="empty-state-title">${msg}</div><div class="empty-state-sub">Add some records to get started</div></div></td></tr>`;
 }
+
+// ─── AUDIT LOG SYSTEM ───
+let auditLogs = [];
+
+function getAdminUser() {
+  // Get current logged-in Firebase user email, fallback to 'Admin'
+  try {
+    const u = firebase.auth().currentUser;
+    return u ? (u.email || 'Admin') : 'Admin';
+  } catch(e) { return 'Admin'; }
+}
+
+function addAuditLog(type, module, title, detail) {
+  const log = {
+    id: 'al_' + Date.now() + '_' + Math.random().toString(36).slice(2,6),
+    type,       // add | edit | delete | pay | att
+    module,     // Labour | Payment | Attendance | Overtime
+    title,
+    detail,
+    by: getAdminUser(),
+    time: new Date().toISOString()
+  };
+  auditLogs.unshift(log);
+  // Keep max 500 logs
+  if (auditLogs.length > 500) auditLogs = auditLogs.slice(0, 500);
+  // Save to localStorage
+  try { localStorage.setItem('auditLogs', JSON.stringify(auditLogs)); } catch(e) {}
+}
+
+function loadAuditLogs() {
+  try {
+    const saved = localStorage.getItem('auditLogs');
+    auditLogs = saved ? JSON.parse(saved) : [];
+  } catch(e) { auditLogs = []; }
+}
+
+function clearAuditLog() {
+  showScreenPopup('Clear Audit Log', 'Kya aap saare audit logs delete karna chahte hain? Yeh wapas nahi hoga.', 'warn', () => {
+    auditLogs = [];
+    try { localStorage.removeItem('auditLogs'); } catch(e) {}
+    renderAuditLog();
+    showToast('Audit log cleared', 'success');
+  });
+}
+
+function renderAuditLog() {
+  const container = document.getElementById('auditLogContainer');
+  if (!container) return;
+
+  const search   = (document.getElementById('auditSearch')?.value || '').toLowerCase();
+  const typeF    = document.getElementById('auditTypeFilter')?.value || '';
+  const moduleF  = document.getElementById('auditModuleFilter')?.value || '';
+
+  let list = auditLogs.filter(l => {
+    const matchSearch = !search ||
+      l.title?.toLowerCase().includes(search) ||
+      l.by?.toLowerCase().includes(search) ||
+      l.module?.toLowerCase().includes(search) ||
+      l.detail?.toLowerCase().includes(search);
+    const matchType   = !typeF   || l.type   === typeF;
+    const matchModule = !moduleF || l.module === moduleF;
+    return matchSearch && matchType && matchModule;
+  });
+
+  if (!list.length) {
+    container.innerHTML = `<div class="empty-state"><div class="empty-state-icon"><i class="fas fa-history"></i></div><div class="empty-state-title">Koi audit log nahi mila</div><div class="empty-state-sub">Jab aap koi action karenge toh yahan record hoga</div></div>`;
+    return;
+  }
+
+  const iconMap  = { add:'fa-plus', edit:'fa-pen', delete:'fa-trash-alt', pay:'fa-wallet', att:'fa-calendar-check' };
+  const labelMap = { add:'Added', edit:'Edited', delete:'Deleted', pay:'Payment', att:'Attendance' };
+  const badgeMap = { add:'badge-green', edit:'badge-blue', delete:'badge-red', pay:'badge-purple', att:'badge-orange' };
+
+  container.innerHTML = list.map(l => {
+    const timeStr = formatAuditTime(l.time);
+    return `<div class="audit-entry">
+      <div class="audit-icon ${l.type}"><i class="fas ${iconMap[l.type]||'fa-circle'}"></i></div>
+      <div class="audit-content">
+        <div class="audit-title">${l.title}</div>
+        ${l.detail ? `<div style="font-size:12px;color:var(--text2);margin-top:2px;">${esc(l.detail)}</div>` : ''}
+        <div class="audit-meta">
+          <span><i class="fas fa-user" style="font-size:10px;margin-right:3px;"></i><span class="by">${esc(l.by)}</span></span>
+          <span><i class="fas fa-clock" style="font-size:10px;margin-right:3px;"></i>${timeStr}</span>
+          <span><i class="fas fa-layer-group" style="font-size:10px;margin-right:3px;"></i>${esc(l.module)}</span>
+        </div>
+      </div>
+      <div class="audit-badge"><span class="badge ${badgeMap[l.type]||'badge-blue'}">${labelMap[l.type]||l.type}</span></div>
+    </div>`;
+  }).join('');
+}
+
+function formatAuditTime(iso) {
+  if (!iso) return '—';
+  try {
+    const d = new Date(iso);
+    return d.toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' })
+         + ' ' + d.toLocaleTimeString('en-IN', { hour:'2-digit', minute:'2-digit' });
+  } catch(e) { return iso; }
+}
+
+// ─── ATTENDANCE WORKER SEARCH ───
+function searchWorkerForAtt(query) {
+  const resultsEl = document.getElementById('attSearchResults');
+  if (!query || query.trim().length < 1) {
+    resultsEl.classList.remove('open');
+    resultsEl.innerHTML = '';
+    return;
+  }
+  const q = query.toLowerCase();
+  const matches = labours.filter(l =>
+    l.name?.toLowerCase().includes(q) ||
+    l.pscId?.toLowerCase().includes(q) ||
+    l.site?.toLowerCase().includes(q)
+  ).slice(0, 8);
+
+  if (!matches.length) {
+    resultsEl.innerHTML = `<div style="padding:12px 14px;color:var(--text3);font-size:13px;text-align:center;"><i class="fas fa-search" style="margin-right:6px;"></i>Koi worker nahi mila</div>`;
+    resultsEl.classList.add('open');
+    return;
+  }
+  resultsEl.innerHTML = matches.map(l => `
+    <div class="att-result-item" onclick="selectWorkerForAtt('${l.id}')">
+      <span class="r-id">${esc(l.pscId||'?')}</span>
+      <span class="r-name">${esc(l.name)}</span>
+      <span class="r-site">${esc(l.site||'')}</span>
+    </div>`).join('');
+  resultsEl.classList.add('open');
+}
+
+function selectWorkerForAtt(id) {
+  const l = labours.find(x => x.id === id);
+  if (!l) return;
+  document.getElementById('attWorker').value = id;
+  document.getElementById('attSearchInput').value = '';
+  document.getElementById('attSearchResults').classList.remove('open');
+  document.getElementById('attSearchResults').innerHTML = '';
+  document.getElementById('attSelId').textContent = l.pscId || '?';
+  document.getElementById('attSelName').textContent = l.name;
+  document.getElementById('attSelSite').textContent = l.site ? '· ' + l.site : '';
+  document.getElementById('attSelectedWorker').classList.add('show');
+}
+
+function clearAttSelection() {
+  document.getElementById('attWorker').value = '';
+  document.getElementById('attSearchInput').value = '';
+  document.getElementById('attSelectedWorker').classList.remove('show');
+  document.getElementById('attSearchResults').classList.remove('open');
+}
+
+// Close search results when clicking outside
+document.addEventListener('click', function(e) {
+  const box = document.getElementById('attSearchResults');
+  const inp = document.getElementById('attSearchInput');
+  if (box && inp && !box.contains(e.target) && e.target !== inp) {
+    box.classList.remove('open');
+  }
+});
 </script>
 <script>
 function googleTranslateElementInit() {
