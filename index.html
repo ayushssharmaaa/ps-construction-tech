@@ -243,6 +243,10 @@ body {
   transform: translate(-50%,-50%);
   transition: transform 0.15s ease, width 0.2s, height 0.2s;
 }
+/* Hide custom cursor on touch/mobile devices */
+@media (hover: none), (pointer: coarse) {
+  .cursor-dot, .cursor-ring { display: none !important; }
+}
 
 /* ===== NAVBAR ===== */
 #navbar {
@@ -1574,24 +1578,26 @@ for(let i=0;i<60;i++){
   pc.appendChild(p);
 }
 
-// ===== CURSOR =====
-const dot = document.getElementById('cursorDot');
-const ring = document.getElementById('cursorRing');
-let mx=0,my=0,rx=0,ry=0;
-window.addEventListener('mousemove',e=>{
-  mx=e.clientX;my=e.clientY;
-  dot.style.left=mx+'px';dot.style.top=my+'px';
-});
-function animCursor(){
-  rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;
-  ring.style.left=rx+'px';ring.style.top=ry+'px';
-  requestAnimationFrame(animCursor);
+// ===== CURSOR (Desktop only) =====
+if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  const dot = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+  let mx=0,my=0,rx=0,ry=0;
+  window.addEventListener('mousemove',e=>{
+    mx=e.clientX;my=e.clientY;
+    dot.style.left=mx+'px';dot.style.top=my+'px';
+  });
+  function animCursor(){
+    rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;
+    ring.style.left=rx+'px';ring.style.top=ry+'px';
+    requestAnimationFrame(animCursor);
+  }
+  animCursor();
+  document.querySelectorAll('a,button,.service-card,.testimonial-card,.cert-badge').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{ ring.style.width='56px';ring.style.height='56px';ring.style.borderColor='rgba(212,160,23,0.7)'; });
+    el.addEventListener('mouseleave',()=>{ ring.style.width='36px';ring.style.height='36px';ring.style.borderColor='rgba(212,80,10,0.5)'; });
+  });
 }
-animCursor();
-document.querySelectorAll('a,button,.service-card,.testimonial-card,.cert-badge').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{ ring.style.width='56px';ring.style.height='56px';ring.style.borderColor='rgba(212,160,23,0.7)'; });
-  el.addEventListener('mouseleave',()=>{ ring.style.width='36px';ring.style.height='36px';ring.style.borderColor='rgba(212,80,10,0.5)'; });
-});
 
 // ===== NAVBAR SCROLL =====
 const nav = document.getElementById('navbar');
