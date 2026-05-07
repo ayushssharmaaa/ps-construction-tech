@@ -1046,6 +1046,10 @@ select.form-input { cursor: pointer; }
   transform: translate(-50%,-50%);
   transition: width 0.2s, height 0.2s;
 }
+/* Hide custom cursor on touch/mobile devices */
+@media (hover: none), (pointer: coarse) {
+  .cursor-dot, .cursor-ring { display: none !important; }
+}
 .ripple-effect {
   position: absolute; border-radius: 50%;
   background: rgba(255,255,255,0.3);
@@ -2876,8 +2880,9 @@ document.addEventListener('click', function(e) {
   }
 });
 
-// ─── CURSOR TRAIL ───
+// ─── CURSOR TRAIL (Desktop only) ───
 (function(){
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
   const dot = document.getElementById('cursorDot');
   const ring = document.getElementById('cursorRing');
   if(!dot || !ring) return;
